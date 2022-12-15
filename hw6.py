@@ -9,6 +9,7 @@ path = r"C:\Users\migod\OneDrive\Робочий стіл\trash"
 
 
 def create_directions(path):
+    
     """
     This function creates directions
     """
@@ -33,6 +34,7 @@ def create_directions(path):
 
 
 def remove_and_rename():
+    
     """
     This function removes and renames files
     """
@@ -52,6 +54,7 @@ def remove_and_rename():
             try:
                 txt_path = os.path.join(roots, file)
                 files_list = file.rsplit(".")
+                
                 if files_list[-1].upper() in images_list:
                     new_name = os.path.join(
                         roots, translate.normalize_names(file))
@@ -59,6 +62,7 @@ def remove_and_rename():
                     txt_path = new_name
                     shutil.move(txt_path, create_directions.images_dir(path))
                     known_extensions.append(files_list[-1])
+                    
                 elif files_list[-1].upper() in videos_list:
                     new_name = os.path.join(
                         roots, translate.normalize_names(file))
@@ -66,6 +70,7 @@ def remove_and_rename():
                     txt_path = new_name
                     shutil.move(txt_path, create_directions.videos_dir(path))
                     known_extensions.append(files_list[-1])
+                    
                 elif files_list[-1].upper() in music_list:
                     new_name = os.path.join(
                         roots, translate.normalize_names(file))
@@ -73,6 +78,7 @@ def remove_and_rename():
                     txt_path = new_name
                     shutil.move(txt_path, create_directions.music_dir(path))
                     known_extensions.append(files_list[-1])
+                    
                 elif files_list[-1].upper() in documents_list:
                     new_name = os.path.join(
                         roots, translate.normalize_names(file))
@@ -81,6 +87,7 @@ def remove_and_rename():
                     shutil.move(
                         txt_path, create_directions.documents_dir(path))
                     known_extensions.append(files_list[-1])
+                    
                 elif files_list[-1].upper() in archives_list:
                     files_name = translate.normalize_names(file)
                     new_name = os.path.join(roots, files_name)
@@ -98,6 +105,7 @@ def remove_and_rename():
                     except (ValueError, shutil.ReadError):
                         pass
                     known_extensions.append(files_list[-1])
+                    
                 else:
                     os.path.join(create_directions.others_dir(path), file)
                     new_name = os.path.join(
